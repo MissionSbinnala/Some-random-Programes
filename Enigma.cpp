@@ -72,7 +72,7 @@ int main() {
 		thirdR = { 7,17,25,16,19,21,9,2,12,10,3,22,4,23,8,11,24,15,18,5,14,20,1,6,0,13 };
 	Rotor third(thirdL, thirdR), second(secondL, secondR, &third), first(firstL, firstR, &second);
 	string message, cry;
-	cout << "ÇëÊäÈëÎÄ±¾:";
+	cout << "è¯·è¾“å…¥æ–‡æœ¬:";
 	cin >> message;
 	cry.resize(message.size());
 	for (int i = 0; i < message.size(); i++) {
@@ -82,11 +82,11 @@ int main() {
 		}
 		cry[i] = first.Rematch(second.Rematch(third.Rematch(25 - third.Match(second.Match(first.Match(temp)))))) + 97;
 		if (cry[i] == 96) {
-			cout << "ÊäÈë´íÎó";
+			cout << "è¾“å…¥é”™è¯¯";
 			return 0;
 		}
 		first.Rotate();
 	}
-	cout << "½á¹ûÎª:" << cry;
+	cout << "ç»“æžœä¸º:" << cry;
 }
 //abcdefghijklmnopqrstuvwxyz
