@@ -64,12 +64,11 @@ array2_ends:	move	$t2, $s2
 		sll	$t7, $s4, 2
 		move	$t1, $s1
 		add	$t1, $t1, $t7
-		move	$s5, $s4
+		li	$s5, 0
 		move	$t2, $s3
 		li	$t3, 0
 		j	comp
-array1_ends:	
-		la	$a0, MESG3       # load address of spacer for syscall
+array1_ends:	la	$a0, MESG3       # load address of spacer for syscall
 		li	$v0, 4           # specify Print String service
 		syscall
 		move	$a0, $t4       # load address of spacer for syscall
@@ -82,6 +81,8 @@ array1_ends:
 		la	$a0, MESG4       # load address of spacer for syscall
 		li	$v0, 4           # specify Print String service
 		syscall
+		sll	$t6, $t6, 2
+		add	$s6, $s6, $t6
 output:		lw	$a0, 0($s6)
 		li	$v0, 1
 		syscall
