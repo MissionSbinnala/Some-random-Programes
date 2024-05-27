@@ -28,13 +28,13 @@ SPACE:	.asciiz	" "
 	la	$a0, MESG2       # load address of spacer for syscall
 	li	$v0, 4           # specify Print String service
 	syscall
-	la	$a0, MESG4       # load address of spacer for syscall
-	li	$v0, 4           # specify Print String service
-	syscall
 	li 	$v0, 5
 	syscall
 	move 	$s2, $v0
 	move 	$s4, $v0
+	la	$a0, MESG4       # load address of spacer for syscall
+	li	$v0, 4           # specify Print String service
+	syscall
 	jal	Input
 	li	$s4, 0
 	li	$s5, 0
