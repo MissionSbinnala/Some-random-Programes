@@ -1,7 +1,7 @@
 	.data
 MESG1:	.asciiz	"Enter the length of array A:"
-MESG2:	.asciiz	"Input array A:"
-MESG3:	.asciiz	"Enter the length of array B:"
+MESG2:	.asciiz	"Enter the length of array B:"
+MESG3:	.asciiz	"Input array A:"
 MESG4:	.asciiz	"Input array B:"
 MESG5:	.asciiz	"Length of the Longest Common Subsequence:"
 MESG6:	.asciiz	"Longest Common Subsequence:"
@@ -15,6 +15,9 @@ SPACE:	.asciiz	" "
 	syscall
 	move 	$s0, $v0
 	move 	$s4, $v0
+	la	$a0, MESG3       # load address of spacer for syscall
+	li	$v0, 4           # specify Print String service
+	syscall
 	li 	$v0, 9           # 使用系统调用功能号9表示申请内存
     	move 	$a0, $s4        # 要申请的内存大小存储在$a0寄存器中
    	syscall    
@@ -23,6 +26,9 @@ SPACE:	.asciiz	" "
 	jal	Input
 	move	$s3, $s5
 	la	$a0, MESG2       # load address of spacer for syscall
+	li	$v0, 4           # specify Print String service
+	syscall
+	la	$a0, MESG4       # load address of spacer for syscall
 	li	$v0, 4           # specify Print String service
 	syscall
 	li 	$v0, 5
@@ -68,7 +74,7 @@ array2_ends:	move	$t2, $s2
 		move	$t2, $s3
 		li	$t3, 0
 		j	comp
-array1_ends:	la	$a0, MESG3       # load address of spacer for syscall
+array1_ends:	la	$a0, MESG5       # load address of spacer for syscall
 		li	$v0, 4           # specify Print String service
 		syscall
 		move	$a0, $t4       # load address of spacer for syscall
@@ -78,7 +84,7 @@ array1_ends:	la	$a0, MESG3       # load address of spacer for syscall
 		li	$v0, 4           # specify Print String service
 		syscall
 		move	$s6, $s3
-		la	$a0, MESG4       # load address of spacer for syscall
+		la	$a0, MESG6       # load address of spacer for syscall
 		li	$v0, 4           # specify Print String service
 		syscall
 		sll	$t6, $t6, 2
