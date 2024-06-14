@@ -71,6 +71,7 @@ array2_ends:	move	$t2, $s2
 		move	$t1, $s1
 		add	$t1, $t1, $t7
 		li	$s5, 0
+		li	$t5, 0
 		move	$t2, $s3
 		li	$t3, 0
 		j	comp
